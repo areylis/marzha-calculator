@@ -1,10 +1,11 @@
 {
   "name": "marzha-calculator",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsc -p ."
+    "build": "tsc -p .",
+    "publish": "npm publish"
   },
   "author": "",
   "license": "ISC",

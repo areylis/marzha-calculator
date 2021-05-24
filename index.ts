@@ -1,4 +1,4 @@
-type ProfitObject = {
+export type ProfitObject = {
   profitRub: number
   profitPercent: number
 }

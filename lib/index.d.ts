@@ -1,4 +1,4 @@
-declare type ProfitObject = {
+export declare type ProfitObject = {
     profitRub: number;
     profitPercent: number;
 };
