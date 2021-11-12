@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsc -p .",
-    "publish": "npm publish"
+    "build": "tsc -p ."
   },
   "author": "",
   "license": "ISC",

@@ -9,8 +9,10 @@ declare type BuyMarzhaProps = {
     localBitcoinsOutgoingFee: number;
     exchangeTradingFee: number;
     btcPurchasedCount?: number;
+    transactionType?: 'maker' | 'taker';
 };
-export declare function calculateLocalBitcoinsBuyMarzha({ localBitcoinsAdPrice, btcPriceOnExchange, usdPrice, localBitcoinsOutgoingFee, exchangeTradingFee, btcPurchasedCount, }: BuyMarzhaProps): ProfitObject;
+export declare function calculateLocalBitcoinsBuyMarzha({ localBitcoinsAdPrice, btcPriceOnExchange, usdPrice, localBitcoinsOutgoingFee, exchangeTradingFee, btcPurchasedCount, // Если мы считаем маржу от покупки одного битка, если мы уже купили, то считаем без учета комиссии локала
+transactionType, }: BuyMarzhaProps): ProfitObject;
 declare type SellMarzhaProps = {
     localBitcoinsAdPrice: number;
     btcPriceOnExchange: number;
@@ -19,7 +21,8 @@ declare type SellMarzhaProps = {
     exchangeTradingFee: number;
     exchangeOutgoingFee: number;
     btcPurchasedCount?: number;
+    transactionType?: 'maker' | 'taker';
 };
-export declare function calculateLocalBitcoinsSellMarzha({ localBitcoinsAdPrice, btcPriceOnExchange, usdPrice, localBitcoinsDepositFee, exchangeTradingFee, exchangeOutgoingFee, btcPurchasedCount, }: SellMarzhaProps): ProfitObject;
+export declare function calculateLocalBitcoinsSellMarzha({ localBitcoinsAdPrice, btcPriceOnExchange, usdPrice, localBitcoinsDepositFee, exchangeTradingFee, exchangeOutgoingFee, btcPurchasedCount, transactionType, }: SellMarzhaProps): ProfitObject;
 export {};
 //# sourceMappingURL=index.d.ts.map
