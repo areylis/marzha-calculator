@@ -10,6 +10,7 @@ type BuyMarzhaProps = {
   localBitcoinsOutgoingFee: number
   exchangeTradingFee: number
   btcPurchasedCount?: number
+  transactionType?: 'maker' | 'taker'
 }
 
 export function calculateLocalBitcoinsBuyMarzha({
@@ -19,9 +20,10 @@ export function calculateLocalBitcoinsBuyMarzha({
   localBitcoinsOutgoingFee,
   exchangeTradingFee,
   btcPurchasedCount = 1, // Если мы считаем маржу от покупки одного битка, если мы уже купили, то считаем без учета комиссии локала
+  transactionType = 'maker',
 }: BuyMarzhaProps): ProfitObject {
   const btcRubPriceOnExchange = btcPriceOnExchange * usdPrice
-  const localBitcoinsTradingFee = 0.01 // 1% комиссии за сделки на локале
+  const localBitcoinsTradingFee = transactionType === 'maker' ? 0.01 : 0 // 1% комиссии за сделки на локале
   const purchasedBitcoinsInRublesOnLocalBitcoins = localBitcoinsAdPrice * btcPurchasedCount
 
   const btcOutFromLocalBitcoins =
@@ -44,6 +46,7 @@ type SellMarzhaProps = {
   exchangeTradingFee: number
   exchangeOutgoingFee: number
   btcPurchasedCount?: number
+  transactionType?: 'maker' | 'taker'
 }
 
 export function calculateLocalBitcoinsSellMarzha({
@@ -54,9 +57,10 @@ export function calculateLocalBitcoinsSellMarzha({
   exchangeTradingFee,
   exchangeOutgoingFee,
   btcPurchasedCount = 1,
+  transactionType = 'maker',
 }: SellMarzhaProps): ProfitObject {
   const btcRubPrice = btcPriceOnExchange * usdPrice
-  const localBitcoinsTradingFee = 0.01 // 1% комиссии за сделки на локале
+  const localBitcoinsTradingFee = transactionType === 'maker' ? 0.01 : 0 // 1% комиссии за сделки на локале
   const purchasedBitcoinsInRublesOnExchange = btcRubPrice * btcPurchasedCount
 
   const btcOutFromExchange = btcPurchasedCount - exchangeTradingFee * btcPurchasedCount - exchangeOutgoingFee
